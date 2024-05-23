@@ -1,0 +1,31 @@
+[package]
+name = "postgres-rustls"
+version = "0.5.0"
+authors = ["Steven Fackler <sfackler@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "TLS support for tokio-postgres via rustls"
+repository = "https://github.com/sfackler/rust-postgres"
+readme = "../README.md"
+
+[badges]
+circle-ci = { repository = "sfackler/rust-postgres" }
+
+[features]
+default = ["runtime"]
+runtime = ["tokio-postgres/runtime"]
+
+[dependencies]
+openssl = "0.10"
+tokio = "1.0"
+tokio-rustls = "0.26"
+rustls = "0.23"
+tokio-postgres = { version = "0.7.0", path = "../tokio-postgres", default-features = false }
+ring = "0.17.8"
+x509-certificate = "0.23.1"
+
+[dev-dependencies]
+futures-util = "0.3"
+tokio = { version = "1.0", features = ["macros", "net", "rt"] }
+postgres = { version = "0.19.0", path = "../postgres" }
+rustls-pemfile = "2.1"
